@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #FDEEDC;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    color: #967E76;
+    
+}
+
+#myCanvas{
+    border-radius: 1em;
+    border: solid;
+    border-color: aliceblue;
+}
+
+.canvas{
+    border-width: 1em;
+    margin: auto;
+    width: fit-content;
+    margin-top: 3%;
+}
+
+.name{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+
+
+
