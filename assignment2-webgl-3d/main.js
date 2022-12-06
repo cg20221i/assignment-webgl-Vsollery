@@ -365,6 +365,38 @@ function main() {
         0.3,   -0.9,   1,     1, 0.5, 0,    1, 0, 0,    // Index: 275
         0.5,   -0.9,   1,     1, 0.5, 0,    1, 0, 0,    // Index: 276
         0.5,   -0.9, 0.5,     1, 0.5, 0,    1, 0, 0,    // Index: 277
+
+    //Cube
+    // Face A       // Red      // Surface orientation
+    -0.5, -0.5, -2,    1, 1, 1,     0, 0, -1,   // Index:  0    
+    0.5, -0.5, -2,    1, 1, 1,     0, 0, -1,   // Index:  1
+    0.5,  0.5, -2,    1, 1, 1,     0, 0, -1,   // Index:  2
+    -0.5,  0.5, -2,    1, 1, 1,     0, 0, -1,   // Index:  3
+    // Face B       // Yellow
+    -0.5, -0.5,  -1,    1, 1, 1,     0, 0, 1,    // Index:  4
+    0.5, -0.5,  -1,    1, 1, 1,     0, 0, 1,    // Index:  5
+    0.5,  0.5,  -1,    1, 1, 1,     0, 0, 1,    // Index:  6
+    -0.5,  0.5,  -1,    1, 1, 1,     0, 0, 1,    // Index:  7
+    // Face C       // Green
+    -0.5, -0.5, -2,     1, 1, 1,     -1, 0, 0,   // Index:  8
+    -0.5,  0.5, -2,     1, 1, 1,     -1, 0, 0,   // Index:  9
+    -0.5,  0.5,  -1,     1, 1, 1,     -1, 0, 0,   // Index: 10
+    -0.5, -0.5,  -1,     1, 1, 1,     -1, 0, 0,   // Index: 11
+    // Face D       // Blue
+    0.5, -0.5, -2,    1, 1, 1,     1, 0, 0,    // Index: 12
+    0.5,  0.5, -2,    1, 1, 1,     1, 0, 0,    // Index: 13
+    0.5,  0.5,  -1,    1, 1, 1,     1, 0, 0,    // Index: 14
+    0.5, -0.5,  -1,    1, 1, 1,     1, 0, 0,    // Index: 15
+    // Face E       // Orange
+    -0.5, -0.5, -2,    1, 1, 1,   0, -1, 0,   // Index: 16
+    -0.5, -0.5,  -1,    1, 1, 1,   0, -1, 0,   // Index: 17
+    0.5, -0.5,  -1,    1, 1, 1,   0, -1, 0,   // Index: 18
+    0.5, -0.5, -2,     1, 1, 1,   0, -1, 0,   // Index: 19
+    // Face F       // White
+    -0.5,  0.5, -2,     1, 1, 1,    0, 1, 0,    // Index: 20
+    -0.5,  0.5,  -1,     1, 1, 1,    0, 1, 0,    // Index: 21
+    0.5,  0.5,  -1,     1, 1, 1,    0, 1, 0,    // Index: 22
+    0.5,  0.5, -2,     1, 1, 1,    0, 1, 0     // Index: 23
 ];
 
    
@@ -435,6 +467,36 @@ function main() {
         248, 249, 250, 248, 250, 251,
         252, 253, 254, 252, 254, 255,
         256, 257, 258, 256, 258, 259,
+
+        //CUBE 
+        260, 261, 262, 260, 262,263,
+        264, 265, 266, 264, 266, 267,
+        268, 269, 270, 268, 270,271,
+        272, 273, 274, 272, 274, 275,
+        276, 277, 278, 276, 278, 279,
+        280, 281, 282, 280, 282, 283,
+        284, 285, 286, 284, 286, 287,
+        288, 289, 290, 288, 290, 291,
+        292, 293, 294, 292, 294, 295,
+        296, 297, 298, 296, 298, 299,
+        300, 301, 302, 300, 302, 303,
+        304, 305, 306, 304, 306, 307,
+        308, 309, 310, 308, 310, 311,
+        // 270, 271, 272, 270, 272, 273,
+        // 274, 275, 276, 274, 274, 277,
+        // 278, 279, 280, 278, 280, 281,
+        // 282, 283, 284, 282, 284, 285,
+        // 286, 287, 288, 286, 288, 289,
+        // 290, 291, 292, 290, 292, 293,
+        // 294, 295, 296, 294, 296, 297,
+        // 298, 299, 300, 298, 300, 301,
+        // 302, 303, 304, 302, 304, 305,
+        // 306, 307, 308, 306, 308, 309,
+        // 310, 311, 312, 310, 312, 313,
+        // 314, 315, 316, 314, 316, 317,
+        // 318, 319, 320, 318, 320, 321,
+        // 322, 323, 324, 322, 324, 325,  
+
      ];
 
     // var vertices = [
@@ -491,6 +553,9 @@ function main() {
         uniform vec3 uViewerPosition;
         uniform mat3 uNormalModel;
         void main() {
+            // vec3 ambient = uLightConstant * uAmbientIntensity;
+            // vec3 phong = ambient;
+            // gl_FragColor = vec4(phong * vColor, 1.0);
             vec3 ambient = uLightConstant * uAmbientIntensity;
             vec3 lightDirection = uLightPosition - vPosition;
             vec3 normalizedLight = normalize(lightDirection);
@@ -504,7 +569,7 @@ function main() {
             vec3 normalizedReflector = normalize(reflect(-lightDirection, normalizedNormal));
             vec3 normalizedViewer = normalize(uViewerPosition - vPosition);
             float cosPhi = dot(normalizedReflector, normalizedViewer);
-            vec3 specular = vec3(0., 0., 0.);
+            vec3 specular = vec3(0.0, 0.0, 0.0);
             if (cosPhi > 0.) {
                 float shininessConstant = 100.0;    // bare minimum spec for metal
                 float specularIntensity = pow(cosPhi, shininessConstant);
@@ -566,10 +631,10 @@ function main() {
         // Ambient
     var uAmbientIntensity = gl.getUniformLocation(shaderProgram, "uAmbientIntensity");
     gl.uniform3fv(uLightConstant, [1.0, 1.0, 1.0]);   // white color
-    gl.uniform1f(uAmbientIntensity, 0.4);             // 40% intensity
+    gl.uniform1f(uAmbientIntensity, 0.161);             // 0.161 intensity
         // Diffuse
     var uLightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
-    gl.uniform3fv(uLightPosition, [1.0, 0.0, 1.0]);
+    gl.uniform3fv(uLightPosition, [0.5, 0.5, 2.0]);
     var uNormalModel = gl.getUniformLocation(shaderProgram, "uNormalModel");
         // Specular
     var uViewerPosition = gl.getUniformLocation(shaderProgram, "uViewerPosition");
