@@ -631,7 +631,7 @@ function main() {
         // Ambient
     var uAmbientIntensity = gl.getUniformLocation(shaderProgram, "uAmbientIntensity");
     gl.uniform3fv(uLightConstant, [1.0, 1.0, 1.0]);   // white color
-    gl.uniform1f(uAmbientIntensity, 0.161);             // 0.161 intensity
+    gl.uniform1f(uAmbientIntensity, 0.461);             // 0.161 intensity
         // Diffuse
     var uLightPosition = gl.getUniformLocation(shaderProgram, "uLightPosition");
     gl.uniform3fv(uLightPosition, [0.5, 0.5, 2.0]);
@@ -696,6 +696,35 @@ function main() {
             case 65: // Object LEFT
                 direction = "left";
                 break;
+                case 73: // Object UP
+                direction = "up";
+                break;
+            case 75: // Object Down
+                direction = "down";
+                break;
+           case 74:
+       
+               camera[0] += 0.05;
+                gl.uniform3fv(uViewerPosition, camera);
+                glMatrix.mat4.lookAt(
+                    view,
+                    camera,
+                    [camera[0], 0.0, -10.0],
+                    [0.0, 1.0, 0.0]
+                );
+                gl.uniformMatrix4fv(uView, false, view);
+               break;
+           case 76:
+               camera[0] -= 0.05;
+               gl.uniform3fv(uViewerPosition, camera);
+               glMatrix.mat4.lookAt(
+                   view,
+                   camera,
+                   [camera[0], 0.0, -10.0],
+                   [0.0, 1.0, 0.0]
+               );
+               gl.uniformMatrix4fv(uView, false, view);
+               break;
             case 38: // Camera UP
                 camera[1] += 0.05;
                 gl.uniform3fv(uViewerPosition, camera);
